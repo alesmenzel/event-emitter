@@ -1,0 +1,8 @@
+# Typescript custom module types
+**/*.d.ts
+
+# Distribution
+dist/
+
+# Test coverage
+coverage/
