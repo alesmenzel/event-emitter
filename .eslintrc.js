@@ -27,5 +27,6 @@ module.exports = {
         ts: 'never',
       },
     ],
+    'no-underscore-dangle': 'off',
   },
 };
