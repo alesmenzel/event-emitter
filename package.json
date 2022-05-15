@@ -4,7 +4,7 @@
   "description": "EventEmitter implementation that works in all browsers.",
   "license": "MIT",
   "main": "./dist/event-emitter.js",
-  "types": "./dist/types/index.d.ts",
+  "types": "./dist/event-emitter.d.ts",
   "author": "Aleš Menzel <alesmenzel@gmail.com> (https://github.com/alesmenzel)",
   "scripts": {
     "build": "rm -rf dist && rollup --config rollup.config.js",
