@@ -1,6 +1,6 @@
 {
   "name": "@alesmenzel/event-emitter",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "EventEmitter implementation that works in all browsers.",
   "license": "MIT",
   "main": "./dist/event-emitter.js",
