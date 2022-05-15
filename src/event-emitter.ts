@@ -12,19 +12,19 @@ export default class EventEmitter<Events extends { [key: string]: unknown }> {
    * @example
    * ```js
    * // Define events as a map of {<type>: <event-data>, ...}
-   * type Events = {
+   * type MyEvents = {
    *   update: { payload: string },
    *   // ...
    * }
    *
-   * const emitter = new EventEmitter<Events>()
+   * const emitter = new EventEmitter<MyEvents>()
    *
-   * const listener = () => {
-   *   // ...
+   * const listener = (eventData) => {
+   *   console.log(eventData.payload)
    * }
    *
-   * emitter.on('update', listener)
-   * emitter.off('update', listener)
+   * const unsubscribe = emitter.on('update', listener)
+   * emitter.off('update', listener) // or just unsubscribe()
    * emitter.emit('update', { payload: 'data' })
    * ```
    */
@@ -56,13 +56,23 @@ export default class EventEmitter<Events extends { [key: string]: unknown }> {
    * Unregister listener
    * @example
    * ```js
-   * const listener = () => ...
-   * .off('update', listener)
+   * const listener = () => { ... }
+   * emitter.off('update', listener)
+   * // Remove all listeners of a type
+   * emitter.off('update')
+   * // Remove all listeners
+   * emitter.off()
    * ```
    */
-  off<Type extends keyof Events>(type: Type, listener: Listener<Events[Type]>): this {
-    if (!type) throw new Error('Cannot call <EventEmitter>.off without a type');
-    if (!listener) throw new Error('Cannot call <EventEmitter>.off without a listener');
+  off<Type extends keyof Events>(type?: Type, listener?: Listener<Events[Type]>): this {
+    if (!type) {
+      this._listeners = {} as Listeners<Events>;
+      return this;
+    }
+    if (!listener) {
+      delete this._listeners[type];
+      return this;
+    }
     if (!this._listeners[type]) return this;
     const listeners = this._listeners[type].filter((fn: Listener<Events[Type]>) => fn !== listener);
     if (listeners.length > 0) {
