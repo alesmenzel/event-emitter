@@ -7,7 +7,7 @@ Type-safe Event Emitter implementation that works in browsers. For server usage,
 Don't. If [EventTarget](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/EventTarget) meets your needs, then use it - you will save on package size and use a standard way to handle events. But if you have taken a look
 at the compatibility table, you will find one alarming thing. The `EventTarget's constructor` has been supported
 in the major browsers only since late 2020, so trying to run `class MyClass extends EventTarget {}` in older browser
-will crash.
+will crash. Also if you would like your events to be type-safe, then `EventTarget` won't help you there.
 
 ## Installation
 
