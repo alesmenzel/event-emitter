@@ -1,4 +1,4 @@
-# Event Emitter
+# 🐉 Event Emitter
 
 Type-safe Event Emitter implementation that works in browsers. For server usage, stick with the nodejs [EventEmitter](https://nodejs.org/dist/latest-v16.x/docs/api/events.html#class-eventemitter).
 
