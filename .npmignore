@@ -19,3 +19,6 @@ tsconfig.json
 
 # Source
 src/
+
+# Docs
+*.md
